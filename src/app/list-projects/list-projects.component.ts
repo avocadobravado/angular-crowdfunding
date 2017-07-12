@@ -42,9 +42,14 @@ export class ListProjectsComponent implements OnInit {
       this.editing = false;
 
       this.appService.saveUpdate(this.projectBeingEdited);
-      // console.log(this.projectBeingEdited);
 
       this.projectBeingEdited = null;
+    }
+  }
+
+  deleteProject(projectToDelete) {
+    if(confirm("Are you sure you don't want to help a non profit or a charity or a business or an OTHER? Get a cheeseburger and think about it...")){
+      this.appService.deleteProject(projectToDelete);
     }
   }
 }

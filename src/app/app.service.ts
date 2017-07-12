@@ -21,6 +21,11 @@ export class AppService {
     this.projects.push(project);
   }
 
+  deleteProject(project) {
+    var albumEntryInFirebase = this.getProjectById(project.$key);
+    albumEntryInFirebase.remove();
+  }
+
   getProjectById(projectId: string){
     return this.database.object('projects/' + projectId);
   }
