@@ -1,0 +1,9 @@
+<form #userForm="ngForm" (ngSubmit)="createUser(userForm)">
+  <label for="name">Name: </label>
+  <input type="text" name="name" ngModel>
+  <label for="email">email: </label>
+  <input type="text" name="email" ngModel>
+  <label for="password">password: </label>
+  <input type="text" name="password" ngModel>
+  <button type="submit">Create Account</button>
+</form>

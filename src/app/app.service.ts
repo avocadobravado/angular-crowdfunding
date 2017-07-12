@@ -7,9 +7,12 @@ import { Founder } from './founder.model';
 export class AppService {
 
   projects: FirebaseListObservable<any[]>;
+  users: FirebaseListObservable<any[]>;
+  userLoggedIn;
 
   constructor(private database: AngularFireDatabase) {
     this.projects = database.list('projects');
+    this.users = database.list('users');
   }
 
   getProjects() {
@@ -44,5 +47,9 @@ export class AppService {
       reward: project.reward,
       typeOfProject: project.typeOfProject
     });
+  }
+
+  createUser(user) {
+    this.users.push(user);
   }
 }
