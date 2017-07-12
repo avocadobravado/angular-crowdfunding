@@ -4,6 +4,7 @@ import { Contribution } from './contribution.model';
 
 export class User {
   backed: Contribution[] = [];
+  // admin or not
   constructor(
     public name: string,
     public password: string,
