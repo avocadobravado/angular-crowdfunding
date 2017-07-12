@@ -1,8 +1,13 @@
 <p>
   list-projects works!
 </p>
-
-<div *ngFor="let project of projects | async" (click)="goToDetailPage(project)">
+<select (change)="onChange($event.target.value)">
+  <option value="all">All</option>
+  <option value="product">Development of a Product</option>
+  <option value="charity">Charitable Organization</option>
+  <option value="other">Other</option>
+</select>
+<div *ngFor="let project of projects | async | filterProjects:filterBy" (click)="goToDetailPage(project)">
   <p>{{project.title}}</p>
   <p>{{project.$key}}</p>
 </div>

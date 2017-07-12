@@ -11,9 +11,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./list-projects.component.css']
 })
 export class ListProjectsComponent implements OnInit {
-  
+
   projects: FirebaseListObservable<any[]>;
+  projectsToDisplay;
   clickedProject;
+  filterBy: string = 'all';
 
   constructor(public appService: AppService, private router: Router) { }
 
@@ -25,4 +27,22 @@ export class ListProjectsComponent implements OnInit {
     this.router.navigate(['project', clickedProject["$key"]]);
   };
 
+  onChange(value) {
+      this.filterBy = value;
+  //   var result = [];
+  //   var testArray = [];
+  //
+  //   this.projects.forEach(function(project) {
+  //     testArray.push(project);
+  //   })
+  //   this.projects.forEach((project) => {
+  //     if (this.filterBy !== 'all') {
+  //       if (project.typeOfProject === this.filterBy) {
+  //         result.push(project);
+  //       }
+  //     } else {
+  //       result.push(project);
+  //     }
+  //   });
+  }
 }

@@ -13,6 +13,7 @@ export class AppService {
   }
 
   getProjects() {
+    console.log(this.database.object);
     return this.projects;
   }
 
@@ -22,5 +23,10 @@ export class AppService {
 
   getProjectById(projectId: string){
     return this.database.object('projects/' + projectId);
+  }
+
+  //TODO: Make this work
+  getProjectsByProjectType(projectType: string) {
+    return this.database.object('projects/' + projectType);
   }
 }
