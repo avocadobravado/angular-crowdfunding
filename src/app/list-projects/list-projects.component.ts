@@ -15,7 +15,10 @@ export class ListProjectsComponent implements OnInit {
   projects: FirebaseListObservable<any[]>;
   projectsToDisplay;
   clickedProject;
+  editing: boolean = false;
+  currentRoute: string = this.router.url;
   filterBy: string = 'all';
+  projectBeingEdited = null;
 
   constructor(public appService: AppService, private router: Router) { }
 
@@ -28,21 +31,20 @@ export class ListProjectsComponent implements OnInit {
   };
 
   onChange(value) {
-      this.filterBy = value;
-  //   var result = [];
-  //   var testArray = [];
-  //
-  //   this.projects.forEach(function(project) {
-  //     testArray.push(project);
-  //   })
-  //   this.projects.forEach((project) => {
-  //     if (this.filterBy !== 'all') {
-  //       if (project.typeOfProject === this.filterBy) {
-  //         result.push(project);
-  //       }
-  //     } else {
-  //       result.push(project);
-  //     }
-  //   });
+    this.filterBy = value;
+  }
+
+  toggleEditing(project) {
+    if (this.editing === false) {
+      this.editing = true;
+      this.projectBeingEdited = project;
+    } else {
+      this.editing = false;
+
+      this.appService.saveUpdate(this.projectBeingEdited);
+      // console.log(this.projectBeingEdited);
+
+      this.projectBeingEdited = null;
+    }
   }
 }

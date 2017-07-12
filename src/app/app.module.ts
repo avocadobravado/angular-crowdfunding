@@ -17,6 +17,7 @@ import { ListProjectsComponent } from './list-projects/list-projects.component';
 import { AddNewProjectComponent } from './add-new-project/add-new-project.component';
 import { FilterProjectsPipe } from './filter-projects.pipe';
 import { AdminComponent } from './admin/admin.component';
+import { EditProjectComponent } from './edit-project/edit-project.component';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -33,7 +34,8 @@ export const firebaseConfig = {
     ListProjectsComponent,
     AddNewProjectComponent,
     FilterProjectsPipe,
-    AdminComponent
+    AdminComponent,
+    EditProjectComponent
   ],
   imports: [
     BrowserModule,

@@ -7,7 +7,27 @@
   <option value="charity">Charitable Organization</option>
   <option value="other">Other</option>
 </select>
-<div *ngFor="let project of projects | async | filterProjects:filterBy" (click)="goToDetailPage(project)">
-  <p>{{project.title}}</p>
-  <p>{{project.$key}}</p>
+<div *ngFor="let project of projects | async | filterProjects:filterBy">
+  <p *ngIf="!editing" (click)="goToDetailPage(project)">{{project.title}}</p>
+  <input *ngIf="editing" type="text" value="{{project.title}}" [(ngModel)]="project.title" #title>
+  <p *ngIf="!editing">{{project.description}}</p>
+  <input *ngIf="editing" type="text" value="{{project.description}}" [(ngModel)]="project.description">
+  <p *ngIf="!editing">{{project.targetFunding}}</p>
+  <input *ngIf="editing" type="text" value="{{project.targetFunding}}" [(ngModel)]="project.targetFunding">
+  <p *ngIf="!editing">{{project.founders.name}}</p>
+  <input *ngIf="editing" type="text" value="{{project.founders.name}}" [(ngModel)]="project.founders.name">
+  <p *ngIf="!editing">{{project.founders.email}}</p>
+  <input *ngIf="editing" type="text" value="{{project.founders.email}}" [(ngModel)]="project.founders.email">
+  <p *ngIf="!editing">{{project.purpose}}</p>
+  <input *ngIf="editing" type="text" value="{{project.purpose}}" [(ngModel)]="project.purpose">
+  <p *ngIf="!editing">{{project.reward}}</p>
+  <input *ngIf="editing" type="text" value="{{project.reward}}" [(ngModel)]="project.reward">
+  <p *ngIf="!editing">{{project.typeOfProject}}</p>
+  <input *ngIf="editing" type="text" value="{{project.typeOfProject}}" [(ngModel)]="project.typeOfProject">
+
+  <hr>
+  <div *ngIf="currentRoute === '/admin'">
+    <button (click)="toggleEditing(project)">Edit</button>
+  </div>
+  <hr>
 </div>

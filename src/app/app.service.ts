@@ -25,8 +25,19 @@ export class AppService {
     return this.database.object('projects/' + projectId);
   }
 
-  //TODO: Make this work
-  getProjectsByProjectType(projectType: string) {
-    return this.database.object('projects/' + projectType);
+  saveUpdate(project) {
+    var projectEntryInDB = this.getProjectById(project.$key);
+    projectEntryInDB.update({
+      title: project.title,
+      description: project.description,
+      targetFunding: project.targetFunding,
+      founders: {
+        name: project.founders.name,
+        email: project.founders.email
+      },
+      purpose: project.purpose,
+      reward: project.reward,
+      typeOfProject: project.typeOfProject
+    });
   }
 }
