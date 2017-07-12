@@ -8,7 +8,7 @@ export class AppService {
 
   projects: FirebaseListObservable<any[]>;
   users: FirebaseListObservable<any[]>;
-  userLoggedIn;
+  userLoggedIn = null;
 
   constructor(private database: AngularFireDatabase) {
     this.projects = database.list('projects');
@@ -51,5 +51,25 @@ export class AppService {
 
   createUser(user) {
     this.users.push(user);
+  }
+
+  login(loginInfo) {
+    this.users.forEach((users) => {
+      users.forEach((user) => {
+        if (user.email === loginInfo.email) {
+          if (user.password === loginInfo.password) {
+            this.userLoggedIn = user;
+            return user;
+          } else {
+            return null;
+          }
+        }
+      });
+    });
+    return null;
+  }
+
+  logout() {
+    this.userLoggedIn = null;
   }
 }

@@ -1,4 +1,4 @@
-
+<p *ngIf="appService.userLoggedIn">Hello, {{appService.userLoggedIn.name}} <a href="#" (click)="logout()">Logout</a></p>
 <a routerLink=""><h1>{{title}}</h1></a>
 <router-outlet></router-outlet>
 
