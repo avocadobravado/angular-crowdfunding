@@ -21,7 +21,7 @@ export class AddNewProjectComponent implements OnInit {
   addProject(form: NgForm) {
     var x = form.value;
     var newFounder = new Founder(x.founderName, x.founderEmail);
-    var newProject = new Project(x.title, x.description, parseInt(x.targetFunding), newFounder, x.purpose, x.reward);
+    var newProject = new Project(x.title, x.description, parseInt(x.targetFunding), newFounder, x.purpose, x.reward, x.typeOfProject);
 
     this.appService.addProject(newProject);
     this.router.navigate(['projects']);

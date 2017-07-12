@@ -9,6 +9,7 @@ export class Project {
     public targetFunding: number,
     public founders: Founder,
     public purpose: string,
-    public reward: string
+    public reward: string,
+    public typeOfProject: string
   ){}
 }
