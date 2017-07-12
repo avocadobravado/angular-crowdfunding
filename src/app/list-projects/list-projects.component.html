@@ -1,0 +1,8 @@
+<p>
+  list-projects works!
+</p>
+
+<div *ngFor="let project of projects | async" (click)="goToDetailPage(project)">
+  <p>{{project.title}}</p>
+  <p>{{project.$key}}</p>
+</div>

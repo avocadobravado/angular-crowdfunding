@@ -1,0 +1,21 @@
+<p>
+  add-new-project works!
+</p>
+
+<form #projectData="ngForm" (ngSubmit)="addProject(projectData); false">
+  <label for="title">Title</label>
+  <input type="text" name="title" ngModel>
+  <label for="description">description</label>
+  <input type="text" name="description" ngModel>
+  <label for="targetFunding">targetFunding</label>
+  <input type="number" name="targetFunding" ngModel>
+  <label for="founderName">Founder Name</label>
+  <input type="text" name="founderName" ngModel>
+  <label for="founderEmail">Founder Email</label>
+  <input type="text" name="founderEmail" ngModel>
+  <label for="purpose">purpose</label>
+  <input type="text" name="purpose" ngModel>
+  <label for="reward">reward</label>
+  <input type="text" name="reward" ngModel>
+  <button type="submit" name="button">Submit</button>
+</form>
