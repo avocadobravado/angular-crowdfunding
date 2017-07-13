@@ -3,12 +3,18 @@
   "description": "",
   "main": "",
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/jaredeiseman/crowdfunding-app",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "authors": [
+    "Rose Sponseller <rosesponseller@gmail.com>"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
 }
