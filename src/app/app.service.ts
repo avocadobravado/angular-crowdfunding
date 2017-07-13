@@ -9,6 +9,7 @@ export class AppService {
   projects: FirebaseListObservable<any[]>;
   users: FirebaseListObservable<any[]>;
   userLoggedIn = null;
+  userLoggedInIsAdmin = false;
   userId: string;
   loginFailed: boolean;
 
@@ -61,6 +62,9 @@ export class AppService {
       users.forEach((user) => {
         if (user.email === loginInfo.email) {
           if (user.password === loginInfo.password) {
+            if (user.isAdmin) {
+              this.userLoggedInIsAdmin = true;
+            }
             this.userLoggedIn = user;
             this.userId = user.$key;
             this.loginFailed = false;

@@ -12,5 +12,5 @@
 <router-outlet></router-outlet>
 
 <footer>
-    <a routerLink="admin" *ngIf="appService.userLoggedIn">Top Secret Area! Admins Only</a>
+    <a routerLink="admin" *ngIf="appService.userLoggedInIsAdmin">Top Secret Area! Admins Only</a>
 </footer>
