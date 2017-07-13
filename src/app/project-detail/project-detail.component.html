@@ -1,7 +1,42 @@
-<p>
-  project-detail works!
+<h3>&larr; <a routerLink="../../projects">Back to projects</a></h3>
+<h2>
   {{(projectToDisplay | async)?.title}}
+</h2>
+
+<h3>
+  <span class="highlight">Description: </span>{{(projectToDisplay | async)?.description}}
+</h3>
+
+<p>
+  <span class="highlight">We need to raise: </span>${{(projectToDisplay | async)?.targetFunding}}
 </p>
+
+<p>
+  <span class="highlight">Current amount raised: </span>${{(projectToDisplay | async)?.currentFunding}}
+</p>
+
+<p>
+  <span class="highlight">Founder information: </span>{{(projectToDisplay | async)?.founders.name}}, {{(projectToDisplay | async)?.founders.email}}
+</p>
+
+<p>
+  <span class="highlight">Purpose of our fundraiser: </span>{{(projectToDisplay | async)?.purpose}}
+</p>
+
+<p>
+  <span class="highlight">Sweet reward for backers: </span>{{(projectToDisplay | async)?.reward}}
+</p>
+
+<div *ngIf="(projectToDisplay | async)?.backers" class="contributor-list">
+  <p>Contributors of this project</p>
+  <ul>
+    <li *ngFor="let contributor of (projectToDisplay | async)?.backers">{{contributor.name}}</li>
+  </ul>
+</div>
+
+<div *ngIf="!appService.userLoggedIn">
+  <a routerLink="../../login" class="login-button">Log in to Contribute</a>
+</div>
 
 <div *ngIf="appService.userLoggedIn">
   <form #backingForm="ngForm" (ngSubmit)="backedProject(backingForm); false">

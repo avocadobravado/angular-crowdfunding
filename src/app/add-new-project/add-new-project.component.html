@@ -1,26 +1,24 @@
-<p>
-  add-new-project works!
-</p>
+<h3>Want to make a difference in the world? Start a new FraudStartr campaign today.</h3>
 
 <form #projectData="ngForm" (ngSubmit)="addProject(projectData); false">
-  <label for="title">Title</label>
+  <label for="title">Name of your campaign:</label>
   <input type="text" name="title" ngModel>
-  <label for="description">description</label>
+  <label for="description">Description of your campaign:</label>
   <input type="text" name="description" ngModel>
-  <label for="targetFunding">targetFunding</label>
+  <label for="targetFunding">How much are you looking to raise for this project?</label>
   <input type="number" name="targetFunding" ngModel>
-  <label for="founderName">Founder Name</label>
+  <label for="founderName">Your name:</label>
   <input type="text" name="founderName" ngModel>
-  <label for="founderEmail">Founder Email</label>
+  <label for="founderEmail">Your email:</label>
   <input type="text" name="founderEmail" ngModel>
-  <label for="purpose">purpose</label>
+  <label for="purpose">The mission or purpose of this campaign:</label>
   <input type="text" name="purpose" ngModel>
-  <label for="reward">reward</label>
+  <label for="reward">What rewards will you send to your backers?</label>
   <input type="text" name="reward" ngModel>
   <select name="typeOfProject" ngModel>
     <option value="product">Development of a Product</option>
     <option value="charity">Charitable Organization</option>
     <option value="other">Other</option>
   </select>
-  <button type="submit" name="button">Submit</button>
+  <button type="submit" name="button">Submit your campaign!</button>
 </form>
