@@ -16,8 +16,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(form: NgForm) {
-    this.appService.login(form.value);
-    this.location.back();
+    this.appService.login(form.value, this.location);
   }
 
 }

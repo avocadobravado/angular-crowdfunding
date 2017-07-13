@@ -7,7 +7,6 @@ export class FilterProjectsPipe implements PipeTransform {
 
   // transform(value: any, filterBy: string): any {
   transform(input: any, filterBy: string): any {
-    console.log(filterBy);
     var result = [];
     if (input !== null) {
       input.forEach(function(project) {

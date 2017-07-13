@@ -10,6 +10,7 @@ export class AppService {
   users: FirebaseListObservable<any[]>;
   userLoggedIn = null;
   userId: string;
+  loginFailed: boolean;
 
   constructor(private database: AngularFireDatabase) {
     this.projects = database.list('projects');
@@ -17,7 +18,6 @@ export class AppService {
   }
 
   getProjects() {
-    console.log(this.database.object);
     return this.projects;
   }
 
@@ -56,20 +56,24 @@ export class AppService {
     this.users.push(user);
   }
 
-  login(loginInfo) {
+  login(loginInfo, location) {
     this.users.forEach((users) => {
       users.forEach((user) => {
         if (user.email === loginInfo.email) {
           if (user.password === loginInfo.password) {
             this.userLoggedIn = user;
             this.userId = user.$key;
+            this.loginFailed = false;
+            location.back();
             return user;
           } else {
+            this.loginFailed = true;
             return null;
           }
         }
       });
     });
+    this.loginFailed = true;
     return null;
   }
 
