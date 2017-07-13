@@ -19,5 +19,6 @@ export class CreateUserComponent implements OnInit {
   createUser(form: NgForm) {
     var newUser = new User(form.value.name, form.value.password, form.value.email);
     this.appService.createUser(newUser);
+    this.router.navigate(['']);
   }
 }

@@ -3,21 +3,21 @@
 
   <form #projectData="ngForm" (ngSubmit)="addProject(projectData); false">
     <label for="title">Name of your campaign:</label>
-    <input type="text" name="title" ngModel>
+    <input type="text" name="title" ngModel required>
     <label for="description">Description of your campaign:</label>
-    <input type="text" name="description" ngModel>
+    <input type="text" name="description" ngModel required>
     <label for="targetFunding">How much are you looking to raise for this project?</label>
-    <input type="number" name="targetFunding" ngModel>
+    <input type="number" name="targetFunding" ngModel required>
     <label for="founderName">Your name:</label>
-    <input type="text" name="founderName" ngModel>
+    <input type="text" name="founderName" ngModel required>
     <label for="founderEmail">Your email:</label>
-    <input type="text" name="founderEmail" ngModel>
+    <input type="text" name="founderEmail" ngModel required>
     <label for="purpose">The mission or purpose of this campaign:</label>
-    <input type="text" name="purpose" ngModel>
+    <input type="text" name="purpose" ngModel required>
     <label for="reward">What rewards will you send to your backers?</label>
-    <input type="text" name="reward" ngModel>
+    <input type="text" name="reward" ngModel required>
     <label for="typeOfProject">How do I English?</label>
-    <select name="typeOfProject" ngModel>
+    <select name="typeOfProject" ngModel required>
       <option value="product">Development of a Product</option>
       <option value="charity">Charitable Organization</option>
       <option value="other">Other</option>

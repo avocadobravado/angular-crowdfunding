@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 import { AppService } from '../app.service';
 import { NgForm } from '@angular/forms';
 import { Contribution } from '../contribution.model';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class ProjectDetailComponent implements OnInit {
   projectId: string;
   projectToDisplay = null;
 
-  constructor(private route: ActivatedRoute, private location: Location, private appService: AppService) {}
+  constructor(private route: ActivatedRoute, private location: Location, private appService: AppService, private router: Router) {}
 
   ngOnInit() {
     this.route.params.forEach((urlParameters) => {
@@ -32,5 +33,6 @@ export class ProjectDetailComponent implements OnInit {
   backedProject(form: NgForm) {
     var newContribution = new Contribution(parseInt(form.value.amountBacked), this.projectId);
     this.appService.backProject(newContribution);
+    this.router.navigate(['project' + this.projectId]);
   }
 }

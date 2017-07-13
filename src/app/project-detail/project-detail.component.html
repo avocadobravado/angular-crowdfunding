@@ -42,7 +42,7 @@
   <div *ngIf="appService.userLoggedIn">
     <form #backingForm="ngForm" (ngSubmit)="backedProject(backingForm); false">
       <label for="amountBacked">Amount to back:</label>
-      <input type="number" name="amountBacked" ngModel>
+      <input type="number" name="amountBacked" ngModel required>
 
       <button type="submit">Back project</button>
     </form>
