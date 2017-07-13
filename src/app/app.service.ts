@@ -9,6 +9,7 @@ export class AppService {
   projects: FirebaseListObservable<any[]>;
   users: FirebaseListObservable<any[]>;
   userLoggedIn = null;
+  userId: string;
 
   constructor(private database: AngularFireDatabase) {
     this.projects = database.list('projects');
@@ -49,6 +50,8 @@ export class AppService {
     });
   }
 
+
+
   createUser(user) {
     this.users.push(user);
   }
@@ -59,6 +62,7 @@ export class AppService {
         if (user.email === loginInfo.email) {
           if (user.password === loginInfo.password) {
             this.userLoggedIn = user;
+            this.userId = user.$key;
             return user;
           } else {
             return null;
@@ -72,4 +76,27 @@ export class AppService {
   logout() {
     this.userLoggedIn = null;
   }
+
+  backProject(newContribution) {
+    this.addContributionToUser(newContribution, this.userId);
+  }
+
+  addContributionToUser(contribution, id) {
+    var userInDB = this.getUserById(id);
+    var arr = [];
+    userInDB.subscribe((snapshot) => {
+      if (snapshot.hasOwnProperty('backed')) {
+        arr = snapshot.backed;
+      }
+    });
+    arr.push(contribution);
+    userInDB.update({
+      backed: arr
+    });
+  }
+
+  getUserById(userId: string) {
+    return this.database.object('users/' + userId);
+  }
+
 }

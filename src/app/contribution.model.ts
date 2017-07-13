@@ -4,8 +4,9 @@ import { User } from './user.model';
 
 export class Contribution {
   constructor (
-    public projectName: string,
-    public amount: number
+    // public projectName: string,
+    public amount: number,
+    public key: string
   )
   {}
 }

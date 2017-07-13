@@ -2,3 +2,12 @@
   project-detail works!
   {{(projectToDisplay | async)?.title}}
 </p>
+
+<div *ngIf="appService.userLoggedIn">
+  <form #backingForm="ngForm" (ngSubmit)="backedProject(backingForm); false">
+    <label for="amountBacked">Amount to back:</label>
+    <input type="number" name="amountBacked" ngModel>
+
+    <button type="submit">Back project</button>
+  </form>
+</div>
