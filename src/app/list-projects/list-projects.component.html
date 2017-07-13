@@ -1,40 +1,41 @@
-<h3>Current FraudStartr campaigns:</h3>
+<div class="container">
+  <h2>Current FraudStartr campaigns:</h2>
+  <select (change)="onChange($event.target.value)">
+    <option value="all">View All Projects</option>
+    <option value="product">Development of a Product</option>
+    <option value="charity">Charitable Organization</option>
+    <option value="other">Other</option>
+  </select>
+  <div *ngFor="let project of projects | async | filterProjects:filterBy" [class]="checkType(project)">
+    <h3 *ngIf="!editing" (click)="goToDetailPage(project)">{{project.title}} </h3>
+    <input *ngIf="editing" type="text" value="{{project.title}}" [(ngModel)]="project.title" #title>
 
-<select (change)="onChange($event.target.value)">
-  <option value="all">All</option>
-  <option value="product">Development of a Product</option>
-  <option value="charity">Charitable Organization</option>
-  <option value="other">Other</option>
-</select>
-<div *ngFor="let project of projects | async | filterProjects:filterBy">
-  <p *ngIf="!editing" (click)="goToDetailPage(project)"><strong>Campaign: </strong> {{project.title}}</p>
-  <input *ngIf="editing" type="text" value="{{project.title}}" [(ngModel)]="project.title" #title>
+    <p *ngIf="!editing"><strong>Description: </strong> {{project.description}}</p>
+    <input *ngIf="editing" type="text" value="{{project.description}}" [(ngModel)]="project.description">
 
-  <p *ngIf="!editing"><strong>Description: </strong> {{project.description}}</p>
-  <input *ngIf="editing" type="text" value="{{project.description}}" [(ngModel)]="project.description">
+    <p *ngIf="!editing"><strong>Target funding: </strong> ${{project.targetFunding}}</p>
+    <input *ngIf="editing" type="text" value="{{project.targetFunding}}" [(ngModel)]="project.targetFunding">
 
-  <p *ngIf="!editing"><strong>Target funding: </strong> {{project.targetFunding}}</p>
-  <input *ngIf="editing" type="text" value="{{project.targetFunding}}" [(ngModel)]="project.targetFunding">
+    <p *ngIf="!editing"><strong>Current funding: </strong> ${{project.currentFunding}}</p>
+    <input *ngIf="editing" type="text" value="{{project.currentFunding}}" [(ngModel)]="project.currentFunding">
 
-  <p *ngIf="!editing"><strong>Founder's name: </strong> {{project.founders.name}}</p>
-  <input *ngIf="editing" type="text" value="{{project.founders.name}}" [(ngModel)]="project.founders.name">
+    <div *ngIf="editing">
+      <input *ngIf="editing" type="text" value="{{project.founders.name}}" [(ngModel)]="project.currentFunding">
 
-  <p *ngIf="!editing"><strong>Founder's email: </strong> {{project.founders.email}}</p>
-  <input *ngIf="editing" type="text" value="{{project.founders.email}}" [(ngModel)]="project.founders.email">
+      <input *ngIf="editing" type="text" value="{{project.founders.email}}" [(ngModel)]="project.founders.email">
 
-  <p *ngIf="!editing"><strong>Project's purpose: </strong> {{project.purpose}}</p>
-  <input *ngIf="editing" type="text" value="{{project.purpose}}" [(ngModel)]="project.purpose">
+      <input *ngIf="editing" type="text" value="{{project.purpose}}" [(ngModel)]="project.purpose">
 
-  <p *ngIf="!editing"><strong>Rewards: </strong> {{project.reward}}</p>
-  <input *ngIf="editing" type="text" value="{{project.reward}}" [(ngModel)]="project.reward">
+      <input *ngIf="editing" type="text" value="{{project.reward}}" [(ngModel)]="project.reward">
 
-  <p *ngIf="!editing"><strong>Category: </strong>{{project.typeOfProject}}</p>
-  <input *ngIf="editing" type="text" value="{{project.typeOfProject}}" [(ngModel)]="project.typeOfProject">
-
-  <hr>
-  <div *ngIf="currentRoute === '/admin'">
-    <button (click)="toggleEditing(project)">Edit</button>
-    <button (click)="deleteProject(project)">Delete</button>
+      <input *ngIf="editing" type="text" value="{{project.typeOfProject}}" [(ngModel)]="project.typeOfProject">
   </div>
 
-</div>
+
+
+    <div *ngIf="currentRoute === '/admin'">
+      <button (click)="toggleEditing(project)">Edit</button>
+      <button (click)="deleteProject(project)">Delete</button>
+    </div>
+  </div>
+</div><!--Container ends-->

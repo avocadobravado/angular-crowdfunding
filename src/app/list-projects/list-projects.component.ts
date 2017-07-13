@@ -19,6 +19,7 @@ export class ListProjectsComponent implements OnInit {
   currentRoute: string = this.router.url;
   filterBy: string = 'all';
   projectBeingEdited = null;
+  adminRoute: boolean = false;
 
   constructor(public appService: AppService, private router: Router) { }
 
@@ -51,5 +52,16 @@ export class ListProjectsComponent implements OnInit {
     if(confirm("Are you sure you don't want to help a non profit or a charity or a business or an OTHER? Get a cheeseburger and think about it...")){
       this.appService.deleteProject(projectToDelete);
     }
+  }
+
+  checkType(project) {
+    if (project.typeOfProject === "other") {
+      return 'card other';
+    } else if (project.typeOfProject === "charity") {
+      return 'card charity';
+    } else if (project.typeOfProject === "product") {
+      return 'card product';
+    }
+    return 'card';
   }
 }

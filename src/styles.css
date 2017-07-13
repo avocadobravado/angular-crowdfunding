@@ -2,11 +2,16 @@
 
 body {
   background-color: #fafafa;
-  font-family: sans-serif;
-  color: #334;
+  font-family: 'Work Sans', sans-serif;
+  letter-spacing: -0.03em;
+  color: #444;
   margin: 0;
   padding: 0;
+  font-size: 1.2em;
+  z-index: 100;
 }
+
+/*Text*/
 
 a {
   text-decoration: none;
@@ -25,4 +30,65 @@ a:hover {
 
 label, input, button {
   display: block;
+}
+
+/*Div*/
+
+.container {
+  max-width: 960px;
+  padding: 10px 20px;
+  margin: 0 auto;
+}
+
+button {
+  margin-top: 10px;
+  background-color: #eea315;
+  border-bottom: 3px solid #cc8d18;
+  color: #fafafa;
+  padding: 15px 10px;
+  border-radius: 5px;
+  transition: none;
+  border: 0;
+  box-shadow: 0;
+  font-size: .8em;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s all ease-in-out;
+}
+
+button:hover {
+  opacity: 0.7;
+}
+
+label {
+  margin: 20px 0 10px;
+  padding-right: 10px;
+  border-bottom: 3px solid #4da7ae;
+  padding-bottom: 5px;
+  display: inline-block;
+  /*color: #cc8d18;*/
+}
+
+input {
+  width: 460px;
+  font-size: 17px;
+  padding: 10px;
+  border-radius: 2px;
+  border: 1px solid #666;
+  outline: none;
+}
+
+select {
+  padding: 10px;
+  height: 30px;
+  width: 480px;
+  font-size: 17px;
+  background-color: #fff;
+  display: block;
+}
+
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }

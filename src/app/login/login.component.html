@@ -1,10 +1,12 @@
-<form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
-  <label for="email">Email: </label>
-  <input type="email" name="email" ngModel>
-  <label for="password">Password: </label>
-  <input type="password" name="password" ngModel>
-  <button type="submit">Login</button>
-</form>
-<div *ngIf="appService.loginFailed">
-  <p>Incorrect Username or Password</p>
+<div class="container">  
+  <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+    <label for="email">Email: </label>
+    <input type="email" name="email" ngModel>
+    <label for="password">Password: </label>
+    <input type="password" name="password" ngModel>
+    <button type="submit">Login</button>
+  </form>
+  <div *ngIf="appService.loginFailed">
+    <p>Incorrect Username or Password</p>
+  </div>
 </div>

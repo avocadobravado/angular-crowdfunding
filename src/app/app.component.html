@@ -10,7 +10,7 @@
       <a routerLink="create-user">Create an account</a>
 
       <!--If user is logged in-->
-      <a *ngIf="!appService.userLoggedIn" routerLink="login">Login</a>
+      <a *ngIf="!appService.userLoggedIn" routerLink="login" class="login">Login</a>
       <p *ngIf="appService.userLoggedIn">Hello, {{appService.userLoggedIn.name}} <a href="#" (click)="logout()">Logout</a></p>
 
     </div><!--Links-->
@@ -21,5 +21,6 @@
 </router-outlet>
 
 <footer>
+    <p>&copy; 2017 Jared and Rose, do not steal!</p>
     <a routerLink="admin" *ngIf="appService.userLoggedInIsAdmin">Top Secret Area! Admins Only</a>
 </footer>

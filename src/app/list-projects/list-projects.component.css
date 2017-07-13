@@ -1,0 +1,64 @@
+/* gold #eea315 */
+
+h2 {
+  color: #4da7ae;
+  text-align: center;
+}
+
+select {
+  clear: both;
+  display: table;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  background-color: #eea315;
+  color: #fafafa;
+  font-size: 1.2em;
+}
+
+strong {
+  color: #4da7ae;
+}
+
+/* Card stuff*/
+.card {
+  float: left;
+  width: 45%;
+  height: 350px;
+  box-sizing: border-box;
+  border: 3px solid mistyrose;
+  padding: 5px 20px;
+  margin-bottom: 30px;
+}
+
+.card:nth-of-type(even) {
+  margin-left: 9.9%;
+}
+
+.card h3 {
+  color: #eea315;
+  text-align: center;
+  padding-top: 0;
+  margin-top: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.card h3:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.other {
+  border: 5px solid #4da7ae;
+  background-image: url('../../assets/niceppl.png');
+  background-size: 100% auto;
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+
+.charity {
+  border: 5px solid #eea315;
+}
+
+.product {
+  border: 5px solid #333;
+}
