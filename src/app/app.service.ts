@@ -79,26 +79,26 @@ export class AppService {
 
   backProject(newContribution) {
     this.addContributionToUser(newContribution, this.userId);
-    this.addBackerToProject(newContribution.key, this.userId);
+    this.addBackerToProject(newContribution.key, this.userId, newContribution.amount);
   }
 
-  addBackerToProject(projectKey, userId) {
+  addBackerToProject(projectKey, userId, contribution) {
     var projectInDB = this.getProjectById(projectKey);
     var userInDB = this.getUserById(userId);
     var user;
-    var arr = [];
+    var project;
     projectInDB.subscribe((snapshot) => {
-      if (snapshot.hasOwnProperty('backers')) {
-        arr = snapshot.backers;
-      }
+      project = snapshot;
     });
     userInDB.subscribe((snapshot) => {
       user = snapshot;
     });
-    arr.push(user);
-    projectInDB.update({
-      backers: arr
-    });
+    if (!project.hasOwnProperty('backers')) {
+      project.backers = [];
+    }
+    project.backers.push(user);
+    project.currentFunding += contribution;
+    projectInDB.set(project);
   }
 
   addContributionToUser(contribution, id) {
