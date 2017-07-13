@@ -8,3 +8,16 @@ footer {
   background-color: #f5f5f5;
   padding: 15px;
 }
+
+body {
+  background-color: #fafafa;
+  font-family: sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+label, input {
+  display: block;
+}
